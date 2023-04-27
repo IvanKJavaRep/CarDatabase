@@ -1,0 +1,28 @@
+CREATE TABLE cars
+(
+    Id Integer,
+    Producer CHARACTER VARYING(20),
+    model CHARACTER VARYING(20),
+    powerHP Integer,
+    Price$ Integer,
+    year_build character varying,
+    category varchar,
+    numberOfSeats integer,
+    UNIQUE(Id)
+   
+);
+
+insert into cars(id, producer, model,powerhp,"price$",year_build,category, numberofseats)
+values (0, 'bmw', 'X5M', 600, 150000, 2022, 'SUV', 5)
+
+try {
+            //Connection connection = dataSourceClass.dataSource().getConnection();
+            //Statement st = connection.createStatement();
+            // ResultSet rs = st.executeQuery("SELECT * FROM cars;");
+            /*while (rs.next()) {
+                System.out.println(rs.getString("producer"));
+            }*/
+
+        } catch (Exception ex) {
+            System.out.println("l");
+        }
