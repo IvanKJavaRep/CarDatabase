@@ -28,7 +28,6 @@ public class MyController {
     @RequestMapping(value = "/filter", method = RequestMethod.POST)
     @ResponseBody
     public void filterData(@RequestBody MyDTO md) {
-        System.out.println(md.producer);
         Parser parser = new Parser();
         String req = parser.parseDTO(md);
         try {
@@ -45,9 +44,7 @@ public class MyController {
                 System.out.print(rs.getString(7) + " ");
                 System.out.print(rs.getString(8));
                 System.out.println();
-
             }
-
         } catch (Exception ex) {
             System.out.println("l");
         }

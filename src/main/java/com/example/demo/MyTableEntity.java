@@ -51,7 +51,5 @@ public class MyTableEntity implements Serializable {
         this.category = category;
         this.numberofseats = numberOfSeats;
         this.power = power;
-
     }
-
 }

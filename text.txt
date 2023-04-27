@@ -26,3 +26,16 @@ try {
         } catch (Exception ex) {
             System.out.println("l");
         }
+
+
+
+
+
+пример запроса для фильтрации
+
+{
+    "model": "X6M",
+    "year_build": "=2022",
+    "category": "SUV",
+    "numberofseats": "=5"
+}
