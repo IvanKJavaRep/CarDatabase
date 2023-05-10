@@ -9,6 +9,8 @@ import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 @RequestMapping(value = "/myservice")
@@ -27,27 +29,32 @@ public class MyController {
 
     @RequestMapping(value = "/filter", method = RequestMethod.POST)
     @ResponseBody
-    public void filterData(@RequestBody MyDTO md) {
+    public List<MyTableEntity> filterData(@RequestBody MyDTO md) {
         Parser parser = new Parser();
         String req = parser.parseDTO(md);
+        ArrayList<MyTableEntity> arr = new ArrayList<>();
         try {
             Connection connection = dataSource.getConnection();
             Statement st = connection.createStatement();
             ResultSet rs = st.executeQuery(req);
             while (rs.next()) {
-                System.out.print(rs.getString(1) + " ");
-                System.out.print(rs.getString(2) + " ");
-                System.out.print(rs.getString(3) + " ");
-                System.out.print(rs.getString(4) + " ");
-                System.out.print(rs.getString(5) + " ");
-                System.out.print(rs.getString(6) + " ");
-                System.out.print(rs.getString(7) + " ");
-                System.out.print(rs.getString(8));
-                System.out.println();
+                MyTableEntity entity = new MyTableEntity();
+                entity.setId(Integer.valueOf(rs.getString(1)));
+                entity.setProducer(rs.getString(2));
+                entity.setModel(rs.getString(3));
+                entity.setPower(Integer.valueOf(rs.getString(4)));
+                entity.setNumberofseats(Integer.valueOf(rs.getString(5)));
+                entity.setYear_build(Integer.valueOf(rs.getString(6)));
+                entity.setCategory(rs.getString(7));
+                entity.setNumberofseats(Integer.valueOf(rs.getString(8)));
+                arr.add(entity);
             }
+
         } catch (Exception ex) {
             System.out.println("l");
         }
+        return arr;
+
 
     }
 
